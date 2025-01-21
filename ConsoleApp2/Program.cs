@@ -14,7 +14,7 @@ namespace main
         public static async Task test(OpenF1Reader openF1Reader)
         {
             var rawData = await openF1Reader.Query(new CarQuery()
-                .Filter(nameof(CarData.DriverNumber), 55)
+                .Filter(nameof(CarData.DriverNumber), 16)
                 .Filter(nameof(CarData.SessionKey), 9159)
                 .Filter(nameof(CarData.Speed), 315, ComparisonOperator.GreaterThanOrEqual)
                 .Filter(nameof(CarData.Date), new DateTime(2023, 9, 15, 13, 35, 41), ComparisonOperator.GreaterThanOrEqual)
@@ -33,6 +33,7 @@ namespace main
                 {
                     Console.WriteLine($"{field.Name}: {field.GetValue(data)}");
                 }
+                Console.WriteLine();
             }
         }
     }
