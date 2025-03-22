@@ -8,13 +8,13 @@
     Title="app">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
-    <ShellContent
         Title="Test"
         ContentTemplate="{DataTemplate local:Calendar}"
         Route="Calendar" />
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
 
 </Shell>
