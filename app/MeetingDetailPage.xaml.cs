@@ -1,27 +1,25 @@
+using Newtonsoft.Json;
 using OpenF1CSharp;
 
 namespace app;
 
-[QueryProperty(nameof(MeetingData), "MeetingData")]
 public partial class MeetingDetailPage : ContentPage
 {
-	public MeetingData? MeetingData { get; set; }
 	public MeetingDetailPage()
 	{
 		InitializeComponent();
 	}
 
-	public MeetingDetailPage(MeetingData meetingData)
-	{
-		InitializeComponent();
-		this.MeetingData = meetingData;
-
-		BindingContext = this;
-	}
-
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    private async void ContentPage_Appearing(object sender, EventArgs e)
     {
-        base.OnNavigatedTo(args);
-		OnPropertyChanged(nameof(MeetingData));
+		OpenF1Reader openF1Reader = new OpenF1Reader();
+
+		var rawData = await openF1Reader.Query(new SessionQuery()
+			.Filter(nameof(SessionData.MeetingKey), 1255)
+			.GenerateQuery());
+
+		if (rawData is null) return;
+		var Data = JsonConvert.DeserializeObject<List<SessionData>>(rawData);
+		Sessions.ItemsSource = Data;
     }
 }

@@ -7,7 +7,6 @@
 
     <Grid RowDefinitions="auto, 50, auto, *" ColumnDefinitions=".75*, .25*" 
           Padding="10"
-          ColumnSpacing="10"
           RowSpacing="10">
         
         <Image Grid.ColumnSpan="2" Source="calendar.png"/>

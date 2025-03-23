@@ -2,21 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="app.MeetingDetailPage"
-             Title="MeetingDetailPage">
+             Title="MeetingDetailPage"
+             Appearing="ContentPage_Appearing">
 
-    <Grid RowDefinitions="*" ColumnDefinitions="*">
-        <ListView
-        Grid.Row="0"
-        Grid.Column="0"
-        x:Name="listMeetings"
-        BackgroundColor="Black"
-        SeparatorColor="White"
-        RowHeight="70">
-            <ListView.ItemTemplate>
+    <Grid RowDefinitions="50, *"
+          Padding="10"
+          RowSpacing="10">
+        <Label Grid.Row="0" Text="Meeting Schedule" FontSize="32"/>
+        <CollectionView
+            Grid.Row="1"
+            BackgroundColor="Black"
+            x:Name="Sessions">
+            <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding MeetingName}" Detail="{Binding Location}"/>
+                    <Border>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+                            <Frame Grid.Column="0" CornerRadius="0">
+                                <Label Text="{Binding DateStart, StringFormat='{0:dd/MM}'}" FontSize="20"/>
+                            </Frame>
+                            <Frame Grid.Column="1" CornerRadius="0">
+                                <Label Text="{Binding SessionName}" FontSize="20"/>
+                            </Frame>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </Grid>
 </ContentPage>
