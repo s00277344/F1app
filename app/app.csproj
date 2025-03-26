@@ -118,10 +118,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Calendar.xaml">
+	  <Compile Update="Pages\FlyoutMainPage.xaml.cs">
+	    <DependentUpon>FlyoutMainPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\Calendar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="MeetingDetailPage.xaml">
+	  <MauiXaml Update="Pages\MeetingDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\FlyoutMainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\FlyoutMenuPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

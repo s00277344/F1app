@@ -1,4 +1,6 @@
-﻿namespace app
+﻿using app.Pages;
+
+namespace app
 {
     public partial class App : Application
     {
@@ -6,7 +8,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
+            MainPage = new FlyoutMainPage();
         }
     }
 }

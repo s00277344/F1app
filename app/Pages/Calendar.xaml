@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:app.Pages"
+             x:Class="app.Pages.Calendar"
+             Title="Calendar"
+             Appearing="ContentPage_Appearing">
+
+    <Grid RowDefinitions="auto, 50, auto, *" ColumnDefinitions=".75*, .25*" 
+          Padding="10"
+          RowSpacing="10">
+        
+        <Image Grid.ColumnSpan="2" Source="calendar.png"/>
+
+        <HorizontalStackLayout Grid.Row="1" Spacing="15">
+            <Label Text="Filter by : " FontSize="14" VerticalTextAlignment="Center"/>
+            <Picker Title="Year" x:Name="YearFilter" SelectedIndexChanged="YearFilter_SelectedIndexChanged"/>
+            <Picker Title="Location" x:Name="LocationFilter" SelectedIndexChanged="LocationFilter_SelectedIndexChanged"/>
+        </HorizontalStackLayout>
+
+        <CollectionView 
+            Grid.Row="3" 
+            Grid.ColumnSpan="2"
+            BackgroundColor="Black"
+            x:Name="listMeetings"
+            SelectionChanged="listMeetings_SelectionChanged"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+                        <Grid ColumnDefinitions="2*, 4*, 2*" MinimumHeightRequest="50">
+                            <Label Grid.Column="0" Text="{Binding DateStart, StringFormat='{0:dd/MM}'}" 
+                                   FontSize="18"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="1" Text="{Binding MeetingName}" 
+                                   FontSize="20"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                            <Label Grid.Column="2" Text="{Binding Year}"
+                                   FontSize="14"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>

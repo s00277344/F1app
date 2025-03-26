@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 using OpenF1CSharp;
 using System.Threading.Tasks;
 
-namespace app;
+namespace app.Pages;
 
 public partial class Calendar : ContentPage
 {
@@ -48,14 +48,6 @@ public partial class Calendar : ContentPage
         getLocations();
     }
 
-
-    private async void listMeetings_ItemTapped(object sender, EventArgs e)
-    {
-        var meetingData = (MeetingData)((ListView)sender).BindingContext;
-
-        await Shell.Current.GoToAsync(nameof(MeetingDetailPage), true, new Dictionary<string, object> { {"MeetingData", meetingData } });
-    }
-
     private async void YearFilter_SelectedIndexChanged(object sender, EventArgs e)
     {
         year = (int)((Picker)sender).SelectedItem;
@@ -81,5 +73,16 @@ public partial class Calendar : ContentPage
 
         meetingData = JsonConvert.DeserializeObject<List<MeetingData>>(rawData);
         listMeetings.ItemsSource = meetingData;
+    }
+
+    private async void listMeetings_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (listMeetings.SelectedItem is not null)
+        {
+            NavigationPage page = new NavigationPage(new MeetingDetailPage(((MeetingData)listMeetings.SelectedItem).MeetingKey));
+
+            await Navigation.PushAsync(page);
+            listMeetings.SelectedItem = null;
+        }
     }
 }

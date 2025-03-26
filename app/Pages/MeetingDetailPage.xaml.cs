@@ -2,13 +2,19 @@ using Newtonsoft.Json;
 using OpenF1CSharp;
 using System.Diagnostics;
 
-namespace app;
+namespace app.Pages;
 
 public partial class MeetingDetailPage : ContentPage
 {
-	int MeetingKey = 1255;
+	int? MeetingKey = 1255;
 	public MeetingDetailPage()
 	{
+		InitializeComponent();
+	}
+
+	public MeetingDetailPage(int? MeetingKey)
+	{
+		this.MeetingKey = MeetingKey;
 		InitializeComponent();
 	}
 
