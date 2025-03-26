@@ -5,10 +5,10 @@
              Title="MeetingDetailPage"
              Appearing="ContentPage_Appearing">
 
-    <Grid RowDefinitions="50, *"
+    <Grid RowDefinitions="auto, *"
           Padding="10"
           RowSpacing="10">
-        <Label Grid.Row="0" Text="Meeting Schedule" FontSize="32"/>
+        <Label x:Name="NameLabel" Grid.Row="0" Text="Meeting Schedule" FontSize="24"/>
         <CollectionView
             Grid.Row="1"
             BackgroundColor="Black"
@@ -21,13 +21,14 @@
                         </Border.StrokeShape>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1.5*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
-                            <Frame Grid.Column="0" CornerRadius="0">
-                                <Label Text="{Binding DateStart, StringFormat='{0:dd/MM}'}" FontSize="20"/>
-                            </Frame>
-                            <Frame Grid.Column="1" CornerRadius="0">
+                            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+                                    <Label Text="{Binding DateStart, StringFormat='{0:dd/MM}'}" FontSize="18"/>
+                                    <Label Text="{Binding DateStart, StringFormat='{0:HH:mm}'}" FontSize="14"/>
+                            </VerticalStackLayout>
+                            <Frame Grid.Column="1" CornerRadius="0" VerticalOptions="Center">
                                 <Label Text="{Binding SessionName}" FontSize="20"/>
                             </Frame>
                         </Grid>
