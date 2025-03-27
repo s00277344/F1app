@@ -1,6 +1,9 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using JolpicaF1CSharp;
 using Newtonsoft.Json;
 using OpenF1CSharp;
+using System.Reflection;
+using System.Text.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace main
 {
@@ -9,7 +12,10 @@ namespace main
         static void Main()
         {
             OpenF1Reader openF1Reader = new OpenF1Reader();
-            test(openF1Reader).Wait();
+            //test(openF1Reader).Wait();
+
+            JolpicaF1Reader jolpicaF1Reader = new JolpicaF1Reader();
+            test2(jolpicaF1Reader).Wait();
         }
         public static async Task test(OpenF1Reader openF1Reader)
         {
@@ -57,6 +63,27 @@ namespace main
                     }
                     Console.WriteLine();
                 }
+        }
+    
+        public static async Task test2(JolpicaF1Reader jolpicaF1Reader)
+        {
+            var temp = new DriverStandingsQuery()
+                .Filter(nameof(DriverStandingData.year), 2024)
+                .GenerateQuery();
+            var query = await jolpicaF1Reader.Query(temp);
+
+            if (query is null)
+            {
+                Console.WriteLine("query is null");
+                return;
+            }
+
+            var apiResponse = JsonConvert.DeserializeObject<Root>(query);
+
+            List<DriverStandingData> driverStandingDatas = apiResponse.MRData?.StandingsTable?.StandingsLists?[0].DriverStandings ?? new List<DriverStandingData>();
+
+            foreach (DriverStandingData data in driverStandingDatas)
+                Console.WriteLine($"{data.position}. {data.Driver.givenName} {data.Driver.familyName} - {data.points} points");
         }
     }
 }

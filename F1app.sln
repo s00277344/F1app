@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "main", "ConsoleApp2\main.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app", "app\app.csproj", "{1A425A44-9031-4E30-9756-7A9A025C3765}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JolpicaF1CSharp", "JolpicaF1CSharp\JolpicaF1CSharp.csproj", "{2D368240-A888-4440-805F-DB7BD6901402}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{1A425A44-9031-4E30-9756-7A9A025C3765}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A425A44-9031-4E30-9756-7A9A025C3765}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A425A44-9031-4E30-9756-7A9A025C3765}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2D368240-A888-4440-805F-DB7BD6901402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D368240-A888-4440-805F-DB7BD6901402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D368240-A888-4440-805F-DB7BD6901402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D368240-A888-4440-805F-DB7BD6901402}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
