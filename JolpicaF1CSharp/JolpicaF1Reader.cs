@@ -19,6 +19,7 @@
             }
             catch (HttpRequestException)
             {
+                Console.WriteLine("request did not succeed");
                 throw;
             }
         }

@@ -68,7 +68,9 @@ namespace main
         public static async Task test2(JolpicaF1Reader jolpicaF1Reader)
         {
             var temp = new DriverStandingsQuery()
-                .Filter(nameof(DriverStandingData.year), 2024)
+                .Filter(nameof(DriverStandingData.year), 2025)
+                .Filter(nameof(DriverStandingData.Driver), "leclerc")
+                .Filter(nameof(DriverStandingData.round), 1)
                 .GenerateQuery();
             var query = await jolpicaF1Reader.Query(temp);
 
@@ -80,7 +82,7 @@ namespace main
 
             var apiResponse = JsonConvert.DeserializeObject<Root>(query);
 
-            List<DriverStandingData> driverStandingDatas = apiResponse.MRData?.StandingsTable?.StandingsLists?[0].DriverStandings ?? new List<DriverStandingData>();
+            List<DriverStandingData> driverStandingDatas = apiResponse.MRData?.StandingsTable?.StandingsLists?.FirstOrDefault().DriverStandings ?? new List<DriverStandingData>();
 
             foreach (DriverStandingData data in driverStandingDatas)
                 Console.WriteLine($"{data.position}. {data.Driver.givenName} {data.Driver.familyName} - {data.points} points");

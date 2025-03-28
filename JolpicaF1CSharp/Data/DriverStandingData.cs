@@ -8,6 +8,9 @@ namespace JolpicaF1CSharp
         [JsonProperty("year")]
         public string? year { get; set; }
 
+        [JsonProperty("round")]
+        public string? round { get; set; }
+
         [JsonProperty("position")]
         public string? position { get; set; }
 

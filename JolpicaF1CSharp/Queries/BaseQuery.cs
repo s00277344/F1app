@@ -7,17 +7,19 @@ namespace JolpicaF1CSharp
     public abstract class BaseQuery<T>
     {
         protected readonly QueryBuilder<T> QueryBuilder;
-        private readonly string DefaultQuery;
-        private readonly string EndQuery;
+        private string DefaultQuery;
+        private string EndQuery;
+        private string baseQuery;
 
         private readonly Type type;
         private readonly Dictionary<string, string> filters;
-        private string baseQuery;
-
-        protected BaseQuery(string baseQuery, string endQuery)
+        private readonly List<string> filterOrder;
+        
+        protected BaseQuery(string baseQuery, string endQuery, List<string> filterOrder)
         {
             type = typeof(T);
             filters = new Dictionary<string, string>();
+            this.filterOrder = filterOrder;
 
             EndQuery = endQuery;
             DefaultQuery = baseQuery;
@@ -36,23 +38,29 @@ namespace JolpicaF1CSharp
             var query = baseQuery;
             if (filters.Any())
             {
-                query += "/" + string.Join("/", filters.Values);
+                var filtered = filters.OrderBy(f => filterOrder.IndexOf(f.Key));
+                query += "/" + string.Join("/", filtered.Select(f => $"{f.Value}"));
             }
 
-            return query + EndQuery;
+            return query + EndQuery + ".json";
         }
 
         public BaseQuery<T> Filter<TValue>(string propertyName, TValue value)
         {
             var jsonPropertyName = GetPropertyName(propertyName);
+            if (jsonPropertyName == "position")
+            {
+                EndQuery += $"/{value}";
+                return this;
+            }
             var filter = GetFilterString(jsonPropertyName, value);
             
             if (filters.TryGetValue(jsonPropertyName, out var filterValue))
                 filters[jsonPropertyName] = filter;
             else
                 filters.Add(jsonPropertyName, filter);
-
-                return this;
+            
+            return this;
         }
 
         private string GetPropertyName(string propertyName)
@@ -74,7 +82,7 @@ namespace JolpicaF1CSharp
 
             return propertyName switch
             {
-                "drivers" => $"{propertyName}/{stringValue}",
+                "Driver" => $"drivers/{stringValue}",
                 _ => $"{stringValue}"
             };
         }
