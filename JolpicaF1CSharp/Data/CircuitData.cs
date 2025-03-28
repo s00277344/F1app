@@ -2,22 +2,37 @@
 
 namespace JolpicaF1CSharp
 {
-    public struct ConstructorData
+    public struct CircuitData
     {
-        [JsonProperty("ConstructorId")]
-        public string? constructorId { get; set; }
+        [JsonProperty("CircuitId")]
+        public string circuitId { get; set; }
 
         [JsonProperty("URL")]
-        public string? url { get; set; }
+        public string url { get; set; }
 
-        [JsonProperty("Name")]
-        public string name { get; set; }
+        [JsonProperty("CircuitName")]
+        public string circuitName { get; set; }
 
-        [JsonProperty("Nationality")]
-        public string? nationality { get; set; }
+        [JsonProperty("Location")]
+        public LocationData Location { get; set; }
     }
 
-    public struct ConstructorFilters
+    public struct LocationData
+    {
+        [JsonProperty("Lat")]
+        public string lat { get; set; }
+
+        [JsonProperty("Long")]
+        public string lng { get; set; }
+
+        [JsonProperty("Locality")]
+        public string locality { get; set; }
+
+        [JsonProperty("Country")]
+        public string country { get; set; }
+    }
+
+    public struct CircuitFilters
     {
         [JsonProperty("Season")]
         public string? season { get; set; }

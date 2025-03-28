@@ -1,6 +1,5 @@
 ﻿using JolpicaF1CSharp;
 using Newtonsoft.Json;
-using OpenF1CSharp;
 
 namespace main
 {
@@ -8,69 +7,15 @@ namespace main
     {
         static void Main()
         {
-            OpenF1Reader openF1Reader = new OpenF1Reader();
-            //test(openF1Reader).Wait();
 
             JolpicaF1Reader jolpicaF1Reader = new JolpicaF1Reader();
             test2(jolpicaF1Reader).Wait();
         }
-        public static async Task test(OpenF1Reader openF1Reader)
-        {
-            var rawData = await openF1Reader.Query(new CarQuery()
-                .Filter(nameof(CarData.DriverNumber), 16)
-                .Filter(nameof(CarData.SessionKey), 9159)
-                .Filter(nameof(CarData.Speed), 315, ComparisonOperator.GreaterThanOrEqual)
-                .Filter(nameof(CarData.Date), new DateTime(2023, 9, 15, 13, 35, 41), ComparisonOperator.GreaterThanOrEqual)
-                .GenerateQuery());
-
-            //var query = await openF1Reader.Query("https://api.openf1.org/v1/sessions?meeting_key=latest");
-            var query = await openF1Reader.Query(new SessionQuery()
-                .Filter(nameof(SessionData.MeetingKey), "latest")
-                .GenerateQuery());
-
-            if (rawData is null)
-            {
-                Console.WriteLine("returned null");
-                return;
-            }
-            List<CarData>? carData = JsonConvert.DeserializeObject<List<CarData>>(rawData);
-            List<SessionData>? queryData = JsonConvert.DeserializeObject<List<SessionData>>(query);
-
-            /*
-            if (carData != null)
-                foreach (CarData data in carData)
-                {
-                    Type type = typeof(CarData);
-                    foreach (System.Reflection.PropertyInfo field in type.GetProperties())
-                    {
-                        Console.WriteLine($"{field.Name}: {field.GetValue(data)}");
-                    }
-                    Console.WriteLine();
-                }
-
-            Console.WriteLine("drivers : \n");
-            */
-            if (queryData != null)
-                foreach (SessionData data in queryData)
-                {
-                    Type type = typeof(SessionData);
-                    foreach (System.Reflection.PropertyInfo field in type.GetProperties())
-                    {
-                        Console.WriteLine($"{field.Name}: {field.GetValue(data)}");
-                    }
-                    Console.WriteLine();
-                }
-        }
     
         public static async Task test2(JolpicaF1Reader jolpicaF1Reader)
         {
-            var temp = new ConstructorQuery()
-                .Filter(nameof(ConstructorFilters.year), 2012)
-                .Filter(nameof(ConstructorFilters.round), 1)
-                .Filter(nameof(ConstructorFilters.circuits), "albert_park")
-                .Filter(nameof(ConstructorFilters.constructors), "ferrari")
-                .Filter(nameof(ConstructorFilters.drivers), "alonso")
-                .GenerateQuery();
+            var temp = new SeasonQuery()
+                .GenerateQuery("100");
             var query = await jolpicaF1Reader.Query(temp);
 
             if (query is null)
@@ -81,11 +26,11 @@ namespace main
 
             var apiResponse = JsonConvert.DeserializeObject<Root>(query);
 
-            var driverStandingDatas = apiResponse.GetTarget<ConstructorData>();
+            var driverStandingDatas = apiResponse.GetTarget<SeasonData>();
             if (driverStandingDatas is null) return;
 
-            foreach (ConstructorData data in driverStandingDatas)
-                Console.WriteLine($"{data.name}. {data.nationality}");
+            foreach (SeasonData data in driverStandingDatas)
+                Console.WriteLine($"{data.season}, {data.url}");
         }
     }
 }

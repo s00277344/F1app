@@ -25,8 +25,8 @@ namespace JolpicaF1CSharp
 
     public struct DriverStandingFilters
     {
-        [JsonProperty("Year")]
-        public string? year { get; set; }
+        [JsonProperty("Season")]
+        public string? season { get; set; }
 
         [JsonProperty("Round")]
         public string? round { get; set; }

@@ -45,10 +45,23 @@ namespace JolpicaF1CSharp
             return query + EndQuery + ".json";
         }
 
+        public string GenerateQuery(string limit)
+        {
+            var query = baseQuery;
+            if (filters.Any())
+            {
+                var filtered = filters.OrderBy(f => filterOrder.IndexOf(f.Key));
+                query += "/" + string.Join("/", filtered.Select(f => $"{f.Value}"));
+            }
+
+            return query + EndQuery + $".json?limit={limit}";
+        }
+
+
         public BaseQuery<T> Filter<TValue>(string propertyName, TValue value)
         {
             var jsonPropertyName = GetPropertyName(propertyName);
-            if (jsonPropertyName == "Position")
+            if (jsonPropertyName == "Position" || jsonPropertyName == "LapNumber" || jsonPropertyName == "StopNumber")
             {
                 EndQuery += $"/{value}";
                 return this;
@@ -89,6 +102,7 @@ namespace JolpicaF1CSharp
                 "Grid" => $"grid/{stringValue}",
                 "Result" => $"results/{stringValue}",
                 "Status" => $"status/{stringValue}",
+                "Laps" => $"laps/{stringValue}",
                 _ => $"{stringValue}"
             };
         }
