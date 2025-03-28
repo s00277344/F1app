@@ -48,7 +48,7 @@ namespace JolpicaF1CSharp
         public BaseQuery<T> Filter<TValue>(string propertyName, TValue value)
         {
             var jsonPropertyName = GetPropertyName(propertyName);
-            if (jsonPropertyName == "position")
+            if (jsonPropertyName == "Position")
             {
                 EndQuery += $"/{value}";
                 return this;
@@ -83,6 +83,12 @@ namespace JolpicaF1CSharp
             return propertyName switch
             {
                 "Driver" => $"drivers/{stringValue}",
+                "Constructor" => $"constructors/{stringValue}",
+                "Circuit" => $"circuits/{stringValue}",
+                "Fastest" => $"fastest/{stringValue}",
+                "Grid" => $"grid/{stringValue}",
+                "Result" => $"results/{stringValue}",
+                "Status" => $"status/{stringValue}",
                 _ => $"{stringValue}"
             };
         }

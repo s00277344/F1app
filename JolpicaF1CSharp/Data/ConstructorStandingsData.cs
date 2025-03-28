@@ -2,28 +2,25 @@
 
 namespace JolpicaF1CSharp
 {
-    public struct DriverStandingData
+    public struct ConstructorStandingsData
     {
         [JsonProperty("Position")]
         public string? position { get; set; }
-
-        [JsonProperty("Driver")]
-        public DriversData Driver { get; set; }
 
         [JsonProperty("PositionText")]
         public string positionText { get; set; }
 
         [JsonProperty("Points")]
-        public string points { get; set; }
+        public string points {  get; set; }
 
         [JsonProperty("Wins")]
         public string wins { get; set; }
 
-        [JsonProperty("Constructors")]
-        public List<ConstructorData> Constructors { get; set; }
+        [JsonProperty("Constructor")]
+        public ConstructorData Constructor { get; set; }
     }
 
-    public struct DriverStandingFilters
+    public struct ConstructorStandingsFilters
     {
         [JsonProperty("Year")]
         public string? year { get; set; }
@@ -31,10 +28,10 @@ namespace JolpicaF1CSharp
         [JsonProperty("Round")]
         public string? round { get; set; }
 
+        [JsonProperty("Constructor")]
+        public string? Constructor {  get; set; }
+
         [JsonProperty("Position")]
         public string? position { get; set; }
-
-        [JsonProperty("Driver")]
-        public DriversData Driver { get; set; }
     }
 }

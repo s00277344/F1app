@@ -1,9 +1,6 @@
 ﻿using JolpicaF1CSharp;
 using Newtonsoft.Json;
 using OpenF1CSharp;
-using System.Reflection;
-using System.Text.Json;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace main
 {
@@ -67,10 +64,12 @@ namespace main
     
         public static async Task test2(JolpicaF1Reader jolpicaF1Reader)
         {
-            var temp = new DriverStandingsQuery()
-                .Filter(nameof(DriverStandingData.year), 2025)
-                .Filter(nameof(DriverStandingData.Driver), "leclerc")
-                .Filter(nameof(DriverStandingData.round), 1)
+            var temp = new ConstructorQuery()
+                .Filter(nameof(ConstructorFilters.year), 2012)
+                .Filter(nameof(ConstructorFilters.round), 1)
+                .Filter(nameof(ConstructorFilters.circuits), "albert_park")
+                .Filter(nameof(ConstructorFilters.constructors), "ferrari")
+                .Filter(nameof(ConstructorFilters.drivers), "alonso")
                 .GenerateQuery();
             var query = await jolpicaF1Reader.Query(temp);
 
@@ -82,10 +81,11 @@ namespace main
 
             var apiResponse = JsonConvert.DeserializeObject<Root>(query);
 
-            List<DriverStandingData> driverStandingDatas = apiResponse.MRData?.StandingsTable?.StandingsLists?.FirstOrDefault().DriverStandings ?? new List<DriverStandingData>();
+            var driverStandingDatas = apiResponse.GetTarget<ConstructorData>();
+            if (driverStandingDatas is null) return;
 
-            foreach (DriverStandingData data in driverStandingDatas)
-                Console.WriteLine($"{data.position}. {data.Driver.givenName} {data.Driver.familyName} - {data.points} points");
+            foreach (ConstructorData data in driverStandingDatas)
+                Console.WriteLine($"{data.name}. {data.nationality}");
         }
     }
 }
