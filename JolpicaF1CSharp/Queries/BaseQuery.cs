@@ -6,7 +6,6 @@ namespace JolpicaF1CSharp
     public interface IBaseQuery { }
     public abstract class BaseQuery<T>
     {
-        protected readonly QueryBuilder<T> QueryBuilder;
         private string DefaultQuery;
         private string EndQuery;
         private string baseQuery;
@@ -24,7 +23,6 @@ namespace JolpicaF1CSharp
             EndQuery = endQuery;
             DefaultQuery = baseQuery;
             this.baseQuery = baseQuery;
-            QueryBuilder = new QueryBuilder<T>(DefaultQuery);
         }
 
         public void Reset()
