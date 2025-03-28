@@ -3,12 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenF1CSharp", "OpenF1CSharp\OpenF1CSharp.csproj", "{DE1270FB-800B-4924-B19D-FC4C852496DB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "main", "ConsoleApp2\main.csproj", "{A06A710A-B712-493C-A650-56B87B7BBB1C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DE1270FB-800B-4924-B19D-FC4C852496DB} = {DE1270FB-800B-4924-B19D-FC4C852496DB}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app", "app\app.csproj", "{1A425A44-9031-4E30-9756-7A9A025C3765}"
 EndProject
@@ -20,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DE1270FB-800B-4924-B19D-FC4C852496DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE1270FB-800B-4924-B19D-FC4C852496DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE1270FB-800B-4924-B19D-FC4C852496DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE1270FB-800B-4924-B19D-FC4C852496DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A06A710A-B712-493C-A650-56B87B7BBB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A06A710A-B712-493C-A650-56B87B7BBB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A06A710A-B712-493C-A650-56B87B7BBB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU

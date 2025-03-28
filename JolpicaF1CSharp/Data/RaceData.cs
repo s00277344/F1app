@@ -66,6 +66,9 @@ namespace JolpicaF1CSharp
 
         [JsonProperty("Time")]
         public string? time { get; set; }
+
+        [JsonProperty("Name")]
+        public string? name { get; set; }
     }
 
     public struct RaceFilters

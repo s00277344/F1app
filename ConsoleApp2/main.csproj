@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JolpicaF1CSharp\JolpicaF1CSharp.csproj" />
-    <ProjectReference Include="..\OpenF1CSharp\OpenF1CSharp.csproj" />
   </ItemGroup>
 
 </Project>

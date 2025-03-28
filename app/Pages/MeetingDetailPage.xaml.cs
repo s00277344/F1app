@@ -1,51 +1,41 @@
-using Newtonsoft.Json;
-using OpenF1CSharp;
-using System.Diagnostics;
+using JolpicaF1CSharp;
 
 namespace app.Pages;
 
 public partial class MeetingDetailPage : ContentPage
 {
-	int? MeetingKey = 1255;
+	RaceData raceData;
 	public MeetingDetailPage()
 	{
 		InitializeComponent();
 	}
 
-	public MeetingDetailPage(int? MeetingKey)
+	public MeetingDetailPage(RaceData raceData)
 	{
-		this.MeetingKey = MeetingKey;
+		this.raceData = raceData;
 		InitializeComponent();
 	}
 
-    private async void ContentPage_Appearing(object sender, EventArgs e)
+    private void ContentPage_Appearing(object sender, EventArgs e)
     {
-		OpenF1Reader openF1Reader = new OpenF1Reader();
-
-		var rawData = await openF1Reader.Query(new SessionQuery()
-			.Filter(nameof(SessionData.MeetingKey), MeetingKey)
-			.GenerateQuery());
-
-		if (rawData is null)
-		{
-			Debug.WriteLine("raw data empty");
-			return;
-		}
-		var Data = JsonConvert.DeserializeObject<List<SessionData>>(rawData);
-		Sessions.ItemsSource = Data;
-
-		
-		rawData = await openF1Reader.Query(new MeetingQuery()
-			.Filter(nameof(MeetingData.MeetingKey), MeetingKey)
-			.GenerateQuery());
-
-		if (rawData is null)
-		{
-            Debug.WriteLine("raw data empty");
-            return;
+		NameLabel.Text = raceData.raceName;
+		List<SessionData?> sessions = new List<SessionData?>();
+        sessions.Add(new SessionData { date = raceData.FirstPractice?.date, time = raceData.FirstPractice?.time, name = "First Practice"});
+        if (raceData.Sprint is not null)
+        {
+            if (raceData.season == "2023")
+                sessions.Add(new SessionData { date = raceData.SprintShoutout?.date, time = raceData.SprintShoutout?.time, name = "Sprint Shoutout" });
+            else
+                sessions.Add(new SessionData { date = raceData.SprintQualifying?.date, time = raceData.SprintQualifying?.time, name = "Sprint Qualifying" });
+            sessions.Add(new SessionData { date = raceData.Sprint?.date, time = raceData.Sprint?.time, name = "Sprint" });
         }
-		var data = JsonConvert.DeserializeObject<List<MeetingData>>(rawData);
-		if (data is null) return;
-		NameLabel.Text = $"{data.First().MeetingName} Schedule";
+        else
+        {
+            sessions.Add(new SessionData { date = raceData.SecondPractice?.date, time = raceData.SecondPractice?.time, name = "Second Practice" });
+            sessions.Add(new SessionData { date = raceData.ThirdPractice?.date, time = raceData.ThirdPractice?.time, name = "Third Practice" });
+        }
+        sessions.Add(new SessionData { date = raceData.Qualifying?.date, time = raceData.Qualifying?.time, name = "Qualifying" });
+        sessions.Add(new SessionData { date = raceData.date, time = raceData.time, name = "Race" });
+        Sessions.ItemsSource = sessions;
     }
 }

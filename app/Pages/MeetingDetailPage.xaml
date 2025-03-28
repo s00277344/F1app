@@ -19,18 +19,16 @@
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="10"/>
                         </Border.StrokeShape>
-                        <Grid>
+                        <Grid MinimumHeightRequest="50">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1.5*"/>
                                 <ColumnDefinition Width="4*"/>
                             </Grid.ColumnDefinitions>
                             <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label Text="{Binding DateStart, StringFormat='{0:dd/MM}'}" FontSize="18"/>
-                                    <Label Text="{Binding DateStart, StringFormat='{0:HH:mm}'}" FontSize="14"/>
+                                    <Label Text="{Binding date}" FontSize="18"/>
+                                    <Label Text="{Binding time}" FontSize="14"/>
                             </VerticalStackLayout>
-                            <Frame Grid.Column="1" CornerRadius="0" VerticalOptions="Center">
-                                <Label Text="{Binding SessionName}" FontSize="20"/>
-                            </Frame>
+                            <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding name}" FontSize="20"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

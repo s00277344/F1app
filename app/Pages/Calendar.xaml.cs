@@ -1,50 +1,58 @@
+using JolpicaF1CSharp;
 using Newtonsoft.Json;
-using OpenF1CSharp;
-using System.Threading.Tasks;
 
 namespace app.Pages;
 
 public partial class Calendar : ContentPage
 {
-    OpenF1Reader openF1Reader = new OpenF1Reader();
-    List<MeetingData>? meetingData;
+    bool IsInitialized = false;
+
+    JolpicaF1Reader jolpicaF1Reader = new JolpicaF1Reader();
+    List<RaceData>? raceData;
     int? year = 2025;
+    Dictionary<string, string> locations = new Dictionary<string, string>();
     string? location;
 
 	public Calendar()
 	{
 		InitializeComponent();
-	}
+    }
 
     private async Task request()
     {
-        var query = new MeetingQuery();
+        var query = new RaceQuery();
 
-        if (year != null)
-            query.Filter(nameof(MeetingData.Year), year);
+        if (year is not null)
+            query.Filter(nameof(RaceFilters.season), year);
 
-        var rawData = await openF1Reader.Query(query.GenerateQuery());
-
+        var rawData = await jolpicaF1Reader.Query(query.GenerateQuery());
         if (rawData is null) return;
 
-        meetingData = JsonConvert.DeserializeObject<List<MeetingData>>(rawData);
-        listMeetings.ItemsSource = meetingData;
+        raceData = JsonConvert.DeserializeObject<Root>(rawData).GetTarget<RaceData>();
+        listMeetings.ItemsSource = raceData;
     }
 
     private void getLocations()
     {
-        List<string> countries = new List<string>();
-        if (meetingData != null)
-            foreach (var meeting in meetingData)
-                if (meeting.Location != null && !countries.Contains(meeting.Location))
-                    countries.Add(meeting.Location);
-        LocationFilter.ItemsSource = countries;
+        locations.Clear();
+        if (raceData is not null && locations is not null)
+        {
+            locations.Add(" ", " ");
+            foreach (var race in raceData)
+                if (race.Circuit.Location.country is not null && !locations.ContainsKey(race.Circuit.Location.country))
+                    locations.Add(race.Circuit.Location.country, race.Circuit.circuitId);
+            LocationFilter.ItemsSource = locations.Keys.ToList();
+            LocationFilter.SelectedIndex = 0;
+        }
     }
 
     private async void ContentPage_Appearing(object sender, EventArgs e)
     {
+        if (IsInitialized) return;
+        IsInitialized = true;
         await request();
-        YearFilter.ItemsSource = new List<int> { 2023, 2024, 2025 };
+        YearFilter.ItemsSource = Enumerable.Range(1950, 76).Reverse().ToList<int>();
+        YearFilter.SelectedIndex = 0;
         getLocations();
     }
 
@@ -59,27 +67,24 @@ public partial class Calendar : ContentPage
     {
         location = (string)((Picker)sender).SelectedItem;
 
-        var query = new MeetingQuery();
+        var query = new RaceQuery();
+        if (year is not null)
+            query.Filter(nameof(RaceFilters.season), year);
+        if (location is not null && location != " ")
+            query.Filter(nameof(RaceFilters.circuits), locations.GetValueOrDefault(location));
 
-        if (year != null)
-            query.Filter(nameof(MeetingData.Year), year);
-
-        if (location != null)
-            query.Filter(nameof(MeetingData.Location), location);
-
-        var rawData = await openF1Reader.Query(query.GenerateQuery());
-
+        var rawData = await jolpicaF1Reader.Query(query.GenerateQuery());
         if (rawData is null) return;
 
-        meetingData = JsonConvert.DeserializeObject<List<MeetingData>>(rawData);
-        listMeetings.ItemsSource = meetingData;
+        raceData = JsonConvert.DeserializeObject<Root>(rawData).GetTarget<RaceData>();
+        listMeetings.ItemsSource = raceData;
     }
 
     private async void listMeetings_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (listMeetings.SelectedItem is not null)
         {
-            NavigationPage page = new NavigationPage(new MeetingDetailPage(((MeetingData)listMeetings.SelectedItem).MeetingKey));
+            NavigationPage page = new NavigationPage(new MeetingDetailPage(((RaceData)listMeetings.SelectedItem)));
 
             await Navigation.PushAsync(page);
             listMeetings.SelectedItem = null;

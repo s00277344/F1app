@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local="clr-namespace:app.Pages"
              x:Class="app.Pages.FlyoutMainPage"
-             Title="FlyoutMainPage">
+             Title="FlyoutMainPage"
+            FlyoutLayoutBehavior="Popover">
 
     <FlyoutPage.Flyout>
         <local:FlyoutMenuPage x:Name="flyoutMenuPage"/>

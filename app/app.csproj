@@ -110,7 +110,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\OpenF1CSharp\OpenF1CSharp.csproj" />
+	  <ProjectReference Include="..\JolpicaF1CSharp\JolpicaF1CSharp.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
