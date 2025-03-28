@@ -5,6 +5,7 @@
              x:Class="app.App">
     <Application.Resources>
         <ResourceDictionary>
+            <local:FullNameConverter x:Key="FullNameConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />

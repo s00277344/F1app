@@ -8,7 +8,7 @@ public partial class FlyoutMainPage : FlyoutPage
         flyoutMenuPage.CollectionView.SelectionChanged += OnSelectionChanged;
 	}
 
-	void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+	void OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
 	{
 		var item = e.CurrentSelection.FirstOrDefault() as FlyoutPageItem;
 

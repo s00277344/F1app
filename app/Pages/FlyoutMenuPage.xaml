@@ -13,6 +13,8 @@
             <x:Array Type="{x:Type local:FlyoutPageItem}">
                 <local:FlyoutPageItem Title="Calendar"
                                       TargetType="{x:Type local:Calendar}"/>
+                <local:FlyoutPageItem Title="Standings"
+                                      TargetType="{x:Type local:Standings}"/>
                 <local:FlyoutPageItem Title="Main Page"
                                       TargetType="{x:Type local:MainPage}"/>
             </x:Array>
@@ -23,6 +25,7 @@
                        FontSize="20"
                        FontAttributes="Bold"
                        VerticalTextAlignment="Center"
+                       VerticalOptions="Center"
                        MinimumHeightRequest="50"/>
             </DataTemplate>
         </CollectionView.ItemTemplate>
