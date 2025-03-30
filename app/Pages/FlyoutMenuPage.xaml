@@ -11,12 +11,12 @@
         
         <CollectionView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutPageItem}">
+                <local:FlyoutPageItem Title="MainPage"
+                                      TargetType="{x:Type local:MainPage}"/>
                 <local:FlyoutPageItem Title="Calendar"
                                       TargetType="{x:Type local:Calendar}"/>
                 <local:FlyoutPageItem Title="Standings"
                                       TargetType="{x:Type local:Standings}"/>
-                <local:FlyoutPageItem Title="Main Page"
-                                      TargetType="{x:Type local:MainPage}"/>
             </x:Array>
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>

@@ -38,6 +38,10 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -57,50 +61,35 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\tracks\Australia.png" />
-	  <None Remove="Resources\Images\tracks\Austria.png" />
-	  <None Remove="Resources\Images\tracks\Azerbaijan.png" />
 	  <None Remove="Resources\Images\tracks\Bahrain.png" />
-	  <None Remove="Resources\Images\tracks\Belgium.png" />
-	  <None Remove="Resources\Images\tracks\Brazil.png" />
-	  <None Remove="Resources\Images\tracks\Canada.png" />
-	  <None Remove="Resources\Images\tracks\China.png" />
-	  <None Remove="Resources\Images\tracks\Hungary.png" />
-	  <None Remove="Resources\Images\tracks\Italy.png" />
-	  <None Remove="Resources\Images\tracks\Japan.png" />
-	  <None Remove="Resources\Images\tracks\Mexico.png" />
 	  <None Remove="Resources\Images\tracks\Miami.png" />
 	  <None Remove="Resources\Images\tracks\Monaco.png" />
-	  <None Remove="Resources\Images\tracks\Netherlands.png" />
-	  <None Remove="Resources\Images\tracks\Qatar.png" />
-	  <None Remove="Resources\Images\tracks\Singapore.png" />
-	  <None Remove="Resources\Images\tracks\Spain.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Images\tracks\abu_dhabi.png" />
-	  <MauiImage Include="Resources\Images\tracks\austria.png" />
-	  <MauiImage Include="Resources\Images\tracks\azerbaijan.png" />
+	  <MauiImage Include="Resources\Images\tracks\yas_marina.png" />
+	  <MauiImage Include="Resources\Images\tracks\red_bull_ring.png" />
+	  <MauiImage Include="Resources\Images\tracks\baku.png" />
 	  <MauiImage Include="Resources\Images\tracks\bahrain.png" />
-	  <MauiImage Include="Resources\Images\tracks\belgium.png" />
-	  <MauiImage Include="Resources\Images\tracks\brazil.png" />
-	  <MauiImage Include="Resources\Images\tracks\canada.png" />
-	  <MauiImage Include="Resources\Images\tracks\china.png" />
-	  <MauiImage Include="Resources\Images\tracks\emilia_romagna.png" />
-	  <MauiImage Include="Resources\Images\tracks\great_britain.png" />
-	  <MauiImage Include="Resources\Images\tracks\hungary.png" />
-	  <MauiImage Include="Resources\Images\tracks\italy.png" />
-	  <MauiImage Include="Resources\Images\tracks\japan.png" />
-	  <MauiImage Include="Resources\Images\tracks\las_vegas.png" />
-	  <MauiImage Include="Resources\Images\tracks\mexico.png" />
+	  <MauiImage Include="Resources\Images\tracks\spa.png" />
+	  <MauiImage Include="Resources\Images\tracks\interlagos.png" />
+	  <MauiImage Include="Resources\Images\tracks\villeneuve.png" />
+	  <MauiImage Include="Resources\Images\tracks\shanghai.png" />
+	  <MauiImage Include="Resources\Images\tracks\imola.png" />
+	  <MauiImage Include="Resources\Images\tracks\silverstone.png" />
+	  <MauiImage Include="Resources\Images\tracks\hungaroring.png" />
+	  <MauiImage Include="Resources\Images\tracks\monza.png" />
+	  <MauiImage Include="Resources\Images\tracks\suzuka.png" />
+	  <MauiImage Include="Resources\Images\tracks\vegas.png" />
+	  <MauiImage Include="Resources\Images\tracks\rodriguez.png" />
 	  <MauiImage Include="Resources\Images\tracks\miami.png" />
 	  <MauiImage Include="Resources\Images\tracks\monaco.png" />
-	  <MauiImage Include="Resources\Images\tracks\netherlands.png" />
-	  <MauiImage Include="Resources\Images\tracks\qatar.png" />
-	  <MauiImage Include="Resources\Images\tracks\saudi_arabia.png" />
-	  <MauiImage Include="Resources\Images\tracks\singapore.png" />
-	  <MauiImage Include="Resources\Images\tracks\spain.png" />
-	  <MauiImage Include="Resources\Images\tracks\united_states.png" />
+	  <MauiImage Include="Resources\Images\tracks\zandvoort.png" />
+	  <MauiImage Include="Resources\Images\tracks\losail.png" />
+	  <MauiImage Include="Resources\Images\tracks\jeddah.png" />
+	  <MauiImage Include="Resources\Images\tracks\marina_bay.png" />
+	  <MauiImage Include="Resources\Images\tracks\catalunya.png" />
+	  <MauiImage Include="Resources\Images\tracks\americas.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -114,7 +103,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Images\tracks\australia.png" />
+	  <MauiImage Include="Resources\Images\tracks\albert_park.png" />
 	</ItemGroup>
 
 	<ItemGroup>

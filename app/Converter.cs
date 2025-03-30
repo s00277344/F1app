@@ -17,4 +17,19 @@ namespace app
             throw new NotImplementedException();
         }
     }
+
+    public class TimerFormatCovnerter : IValueConverter
+    {
+        public object Convert(object? value, Type targetType, object? paramter, CultureInfo culture)
+        {
+            if (value is string time && time.Length > 5)
+                return time[..5];
+            return string.Empty;
+        }
+
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

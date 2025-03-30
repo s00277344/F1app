@@ -13,7 +13,7 @@
     <FlyoutPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <local:Calendar/>
+                <local:MainPage/>
             </x:Arguments>
         </NavigationPage>
     </FlyoutPage.Detail>

@@ -5,34 +5,37 @@
              Title="MeetingDetailPage"
              Appearing="ContentPage_Appearing">
 
-    <Grid RowDefinitions="auto, *"
-          Padding="10"
-          RowSpacing="10">
-        <Label x:Name="NameLabel" Grid.Row="0" Text="Meeting Schedule" FontSize="24"/>
-        <CollectionView
-            Grid.Row="1"
+    <VerticalStackLayout Padding="30,0"
+                         Spacing="25">
+        <Label x:Name="NameLabel" Text="Meeting Schedule" FontSize="24"/>
+        <Border>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10"/>
+            </Border.StrokeShape>
+            <CollectionView
             BackgroundColor="Black"
             x:Name="Sessions">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border>
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10"/>
-                        </Border.StrokeShape>
-                        <Grid MinimumHeightRequest="50">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.5*"/>
-                                <ColumnDefinition Width="4*"/>
-                            </Grid.ColumnDefinitions>
-                            <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
+                            <Grid MinimumHeightRequest="50">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.5*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
                                     <Label Text="{Binding date}" FontSize="18"/>
-                                    <Label Text="{Binding time}" FontSize="14"/>
-                            </VerticalStackLayout>
-                            <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding name}" FontSize="20"/>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+                                    <Label Text="{Binding time, Converter={StaticResource TimeFormatConverter}}" FontSize="14"/>
+                                </VerticalStackLayout>
+                                <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding name}" FontSize="20"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
+    </VerticalStackLayout>
 </ContentPage>

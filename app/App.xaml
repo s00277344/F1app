@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:FullNameConverter x:Key="FullNameConverter"/>
+            <local:TimerFormatCovnerter x:Key="TimeFormatConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
