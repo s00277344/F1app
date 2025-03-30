@@ -61,12 +61,77 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\constructors\cars\alpine.png" />
+	  <None Remove="Resources\Images\constructors\cars\ferrari.png" />
+	  <None Remove="Resources\Images\constructors\cars\haas.png" />
+	  <None Remove="Resources\Images\constructors\cars\mclaren.png" />
+	  <None Remove="Resources\Images\constructors\cars\mercedes.png" />
+	  <None Remove="Resources\Images\constructors\cars\williams.png" />
+	  <None Remove="Resources\Images\drivers\albon.png" />
+	  <None Remove="Resources\Images\drivers\alonso.png" />
+	  <None Remove="Resources\Images\drivers\antonelli.png" />
+	  <None Remove="Resources\Images\drivers\bearman.png" />
+	  <None Remove="Resources\Images\drivers\bortoleto.png" />
+	  <None Remove="Resources\Images\drivers\doohan.png" />
+	  <None Remove="Resources\Images\drivers\gasly.png" />
+	  <None Remove="Resources\Images\drivers\hadjar.png" />
+	  <None Remove="Resources\Images\drivers\hamilton.png" />
+	  <None Remove="Resources\Images\drivers\lawson.png" />
+	  <None Remove="Resources\Images\drivers\leclerc.png" />
+	  <None Remove="Resources\Images\drivers\max_verstappen.png" />
+	  <None Remove="Resources\Images\drivers\norris.png" />
+	  <None Remove="Resources\Images\drivers\ocon.png" />
+	  <None Remove="Resources\Images\drivers\piastri.png" />
+	  <None Remove="Resources\Images\drivers\russell.png" />
+	  <None Remove="Resources\Images\drivers\sainz.png" />
+	  <None Remove="Resources\Images\drivers\stroll.png" />
+	  <None Remove="Resources\Images\drivers\tsunoda.png" />
 	  <None Remove="Resources\Images\tracks\Bahrain.png" />
 	  <None Remove="Resources\Images\tracks\Miami.png" />
 	  <None Remove="Resources\Images\tracks\Monaco.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\constructors\cars\alpine.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\aston_martin.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\ferrari.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\haas.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\sauber.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\mclaren.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\mercedes.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\rb.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\red_bull.png" />
+	  <MauiImage Include="Resources\Images\constructors\cars\williams.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\alpine_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\aston_martin_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\ferrari_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\haas_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\sauber_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\mclaren_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\mercedes_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\rb_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\red_bull_logo.png" />
+	  <MauiImage Include="Resources\Images\constructors\logos\williams_logo.png" />
+	  <MauiImage Include="Resources\Images\drivers\albon.png" />
+	  <MauiImage Include="Resources\Images\drivers\alonso.png" />
+	  <MauiImage Include="Resources\Images\drivers\antonelli.png" />
+	  <MauiImage Include="Resources\Images\drivers\bearman.png" />
+	  <MauiImage Include="Resources\Images\drivers\bortoleto.png" />
+	  <MauiImage Include="Resources\Images\drivers\doohan.png" />
+	  <MauiImage Include="Resources\Images\drivers\gasly.png" />
+	  <MauiImage Include="Resources\Images\drivers\hadjar.png" />
+	  <MauiImage Include="Resources\Images\drivers\hamilton.png" />
+	  <MauiImage Include="Resources\Images\drivers\lawson.png" />
+	  <MauiImage Include="Resources\Images\drivers\leclerc.png" />
+	  <MauiImage Include="Resources\Images\drivers\max_verstappen.png" />
+	  <MauiImage Include="Resources\Images\drivers\hulkenberg.png" />
+	  <MauiImage Include="Resources\Images\drivers\norris.png" />
+	  <MauiImage Include="Resources\Images\drivers\ocon.png" />
+	  <MauiImage Include="Resources\Images\drivers\piastri.png" />
+	  <MauiImage Include="Resources\Images\drivers\russell.png" />
+	  <MauiImage Include="Resources\Images\drivers\sainz.png" />
+	  <MauiImage Include="Resources\Images\drivers\stroll.png" />
+	  <MauiImage Include="Resources\Images\drivers\tsunoda.png" />
 	  <MauiImage Include="Resources\Images\tracks\yas_marina.png" />
 	  <MauiImage Include="Resources\Images\tracks\red_bull_ring.png" />
 	  <MauiImage Include="Resources\Images\tracks\baku.png" />

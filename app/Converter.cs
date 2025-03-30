@@ -32,4 +32,21 @@ namespace app
             throw new NotImplementedException();
         }
     }
+
+    public class DateFormatCovnerter : IValueConverter
+    {
+        public object Convert(object? value, Type targetType, object? paramter, CultureInfo culture)
+        {
+            // yyyy-mm-dd
+            if (value is string date && date.Length > 5)
+                return $"{date[8..]}-{date[5..7]}";
+            return string.Empty;
+        }
+
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 }

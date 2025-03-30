@@ -5,32 +5,38 @@
              Title="MeetingDetailPage"
              Appearing="ContentPage_Appearing">
 
-    <VerticalStackLayout Padding="30,0"
-                         Spacing="25">
+    <VerticalStackLayout 
+        Padding="30,0"
+        Spacing="25">
+
         <Label x:Name="NameLabel" Text="Meeting Schedule" FontSize="24"/>
+        
         <Border>
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="10"/>
             </Border.StrokeShape>
-            <CollectionView
-            BackgroundColor="Black"
-            x:Name="Sessions">
+            <CollectionView 
+                BackgroundColor="Black"
+                x:Name="Sessions">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border>
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10"/>
+                                <RoundRectangle CornerRadius="0"/>
                             </Border.StrokeShape>
+
                             <Grid MinimumHeightRequest="50">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1.5*"/>
                                     <ColumnDefinition Width="4*"/>
                                 </Grid.ColumnDefinitions>
+
                                 <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
                                     <Label Text="{Binding date}" FontSize="18"/>
                                     <Label Text="{Binding time, Converter={StaticResource TimeFormatConverter}}" FontSize="14"/>
                                 </VerticalStackLayout>
                                 <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding name}" FontSize="20"/>
+
                             </Grid>
                         </Border>
                     </DataTemplate>

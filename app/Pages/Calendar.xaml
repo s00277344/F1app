@@ -6,51 +6,59 @@
              Title="Calendar"
              Appearing="ContentPage_Appearing">
 
-    <Grid RowDefinitions="auto, 75, auto, *" ColumnDefinitions=".75*, .25*" 
-          Padding="10"
-          RowSpacing="10">
-        
-        <Image Grid.ColumnSpan="2" Source="calendar.png"/>
+    <ScrollView>
+        <VerticalStackLayout 
+            Padding="30,0"
+            Spacing="25">
 
-        <HorizontalStackLayout Grid.Row="1" Spacing="15">
-            <Label Text="Filter by : " FontSize="14" VerticalTextAlignment="Center"/>
-            <Picker Title="Year" x:Name="YearFilter" SelectedIndexChanged="YearFilter_SelectedIndexChanged"/>
-            <Picker Title="Location" x:Name="LocationFilter" SelectedIndexChanged="LocationFilter_SelectedIndexChanged"/>
-        </HorizontalStackLayout>
+            <Image Source="calendar.png"/>
 
-        <CollectionView 
-            Grid.Row="3" 
-            Grid.ColumnSpan="2"
-            BackgroundColor="Black"
-            x:Name="listMeetings"
-            SelectionChanged="listMeetings_SelectionChanged"
-            SelectionMode="Single">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border>
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10"/>
-                        </Border.StrokeShape>
-                        <Grid ColumnDefinitions="2*, 4*, 2*" MinimumHeightRequest="50">
-                            <Label Grid.Column="0" Text="{Binding date}" 
-                                   FontSize="18"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="1" Text="{Binding raceName}" 
-                                   FontSize="20"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="2" Text="{Binding season}"
-                                   FontSize="14"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"/>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Filter by : " FontSize="14" VerticalTextAlignment="Center"/>
+                <Picker Title="Year" x:Name="YearFilter" SelectedIndexChanged="YearFilter_SelectedIndexChanged"/>
+                <Picker Title="Location" x:Name="LocationFilter" SelectedIndexChanged="LocationFilter_SelectedIndexChanged"/>
+            </HorizontalStackLayout>
+
+            <Border>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
             
-        </CollectionView>
+                <CollectionView 
+                    BackgroundColor="Black"
+                    x:Name="listMeetings"
+                    SelectionChanged="listMeetings_SelectionChanged"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeThickness=".5" Padding="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0"/>
+                                </Border.StrokeShape>
 
-    </Grid>
+                                <Grid ColumnDefinitions="2*, 4*, 2*" MinimumHeightRequest="50">
+                                    <Label 
+                                        Grid.Column="0" Text="{Binding date, Converter={StaticResource DateFormatConverter}}" 
+                                        FontSize="14"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"/>
+                                    <Label 
+                                        Grid.Column="1" Text="{Binding raceName}" 
+                                        FontSize="20"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"/>
+                                    <Label 
+                                        Grid.Column="2" Text="{Binding season}"
+                                        FontSize="14"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

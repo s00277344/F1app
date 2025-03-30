@@ -27,10 +27,10 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="10"/>
                 </Border.StrokeShape>
-                <Grid RowDefinitions="*, *, *"
+                <Grid x:Name="GridNextRace"
+                      RowDefinitions="*, *, *"
                       ColumnDefinitions="*, *, *, *"
-                      BackgroundColor="Black"
-                      x:Name="GridNextRace">
+                      BackgroundColor="Black">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
                     </Grid.GestureRecognizers>
@@ -51,12 +51,82 @@
                 </Grid>
             </Border>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+            <Label 
+                Text="Favorite Driver Tracker"
+                Style="{StaticResource SubHeadline}"/>
+
+            <Border>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid x:Name="GridFavDriver"
+                      RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*,*,*"
+                      BackgroundColor="Black">
+                    <Label 
+                        Text="{Binding positionText, StringFormat='P{0}'}"
+                        FontSize="16"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"/>
+                    <Label 
+                        Grid.Row="1"
+                        Text="{Binding points, StringFormat='{0}pts'}"
+                        FontSize="16"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Center"/>
+                    <Label 
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+                        Text="{Binding Driver, Converter={StaticResource FullNameConverter}}"
+                        FontSize="20"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                    <Image 
+                        Grid.Column="3" 
+                        Grid.RowSpan="3" 
+                        Source="{Binding Driver.driverId, StringFormat='{0}.png'}"
+                        MaximumHeightRequest="60"
+                        HorizontalOptions="End"/>
+                </Grid>
+            </Border>
+
+            <Label 
+                Text="Favorite Constructor Tracker"
+                Style="{StaticResource SubHeadline}"/>
+
+            <Border>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid x:Name="GridFavConstructor"
+                      RowDefinitions="*,*,*"
+                      ColumnDefinitions="*,*,*,*"
+                      BackgroundColor="Black">
+                    <Label 
+                        Text="{Binding positionText, StringFormat='P{0}'}"
+                        FontSize="16"
+                        VerticalOptions="End"
+                        HorizontalOptions="Center"/>
+                    <Label 
+                        Grid.Row="1"
+                        Text="{Binding points, StringFormat='{0}pts'}"
+                        FontSize="16"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Center"/>
+                    <Label 
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+                        Text="{Binding Constructor.name}"
+                        FontSize="20"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
+                    <Image 
+                        Grid.Column="3" 
+                        Grid.RowSpan="3"
+                        Source="{Binding Constructor.constructorId, StringFormat='{0}_logo.png'}" 
+                        MaximumHeightRequest="60" 
+                        HorizontalOptions="End"/>
+                </Grid>
+            </Border>
+
         </VerticalStackLayout>
     </ScrollView>
 

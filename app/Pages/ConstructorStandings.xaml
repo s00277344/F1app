@@ -3,48 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:app.Pages"
              x:Class="app.Pages.ConstructorStandings"
-             Title="ConstructorStandings"
+             Title="Constructors Standings"
              Appearing="ContentPage_Appearing">
 
-    <Grid RowDefinitions="auto, 75, auto, *" ColumnDefinitions=".75*, .25*"
-          Padding="10"
-          RowSpacing="10">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
 
-        <Label Grid.ColumnSpan="2" Text="Drivers Standings" FontSize="40" FontAttributes="Bold"/>
+            <Label Text="Constructors Standings" FontSize="40" FontAttributes="Bold"/>
 
-        <HorizontalStackLayout Grid.Row="1" Spacing="15">
-            <Label Text="Filter by : " FontSize="14" VerticalTextAlignment="Center"/>
-            <Picker Title="Year" x:Name="YearFilter" SelectedIndexChanged="YearFilter_SelectedIndexChanged"/>
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="Filter by : " FontSize="14" VerticalTextAlignment="Center"/>
+                <Picker Title="Year" x:Name="YearFilter" SelectedIndexChanged="YearFilter_SelectedIndexChanged"/>
+            </HorizontalStackLayout>
 
-        <CollectionView Grid.Row="3" 
-                        Grid.ColumnSpan="2"
-                        BackgroundColor="Black"
-                        x:Name="listDrivers">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Border>
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10"/>
-                        </Border.StrokeShape>
-                        <Grid ColumnDefinitions="2*, 4*, 2*" MinimumHeightRequest="50">
-                            <Label Grid.Column="0" Text="{Binding position}"
-                                   FontSize="18"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="1" Text="{Binding Constructor.name}"
-                                   FontSize="18"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"/>
-                            <Label Grid.Column="2" Text="{Binding points, StringFormat='{0}pts'}"
-                                   FontSize="18"
-                                   HorizontalTextAlignment="Center"
-                                   VerticalTextAlignment="Center"/>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>
+            <Border>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                
+                <CollectionView 
+                    BackgroundColor="Black"
+                    x:Name="listDrivers">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border>
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0"/>
+                                </Border.StrokeShape>
+
+                                <Grid ColumnDefinitions="2*, 4*, 2*" MinimumHeightRequest="50">
+                                    <Label 
+                                        Grid.Column="0" Text="{Binding position}"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"/>
+                                    <Label 
+                                        Grid.Column="1" Text="{Binding Constructor.name}"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"/>
+                                    <Label 
+                                        Grid.Column="2" Text="{Binding points, StringFormat='{0}pts'}"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </VerticalStackLayout>
+
+    </ScrollView>
 
 </ContentPage>
