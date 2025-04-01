@@ -14,13 +14,11 @@ public partial class FlyoutMainPage : FlyoutPage
 
 		if (item != null)
 		{
-			var temp = Activator.CreateInstance(item.TargetType);
-			if (temp != null)
-			{
-                Detail = new NavigationPage(temp as Page);
+			if (item.page is null)
+				item.page = Activator.CreateInstance(item.TargetType) as Page;
+			    Detail = new NavigationPage(item.page);
                 if (!((IFlyoutPageController)this).ShouldShowSplitMode)
                     IsPresented = false;
-            }
         }
 	}
 }

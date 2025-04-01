@@ -26,7 +26,9 @@
                 <CollectionView 
                     Grid.ColumnSpan="2"
                     BackgroundColor="Black"
-                    x:Name="listDrivers">
+                    x:Name="listDrivers"
+                    SelectionChanged="listDrivers_SelectionChanged"
+                    SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 

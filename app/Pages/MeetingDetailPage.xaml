@@ -32,16 +32,29 @@
                                 </Grid.ColumnDefinitions>
 
                                 <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label Text="{Binding date}" FontSize="18"/>
-                                    <Label Text="{Binding time, Converter={StaticResource TimeFormatConverter}}" FontSize="14"/>
+                                    <Label 
+                                        Text="{Binding date, Converter={StaticResource DateFormatConverter}}" 
+                                        FontSize="18"
+                                        HorizontalOptions="Center"/>
+                                    <Label 
+                                        Text="{Binding time, Converter={StaticResource TimeFormatConverter}}" 
+                                        FontSize="14"
+                                        HorizontalOptions="Center"/>
                                 </VerticalStackLayout>
-                                <Label Grid.Column="1" HorizontalOptions="Center" Text="{Binding name}" FontSize="20"/>
-
+                                <Label 
+                                    Text="{Binding name}" 
+                                    FontSize="20"
+                                    Grid.Column="1" 
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="Center" 
+                                    VerticalTextAlignment="Center"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Border>
+
+        <Image x:Name="imgCircuit" VerticalOptions="Center" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentPage>

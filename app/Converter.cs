@@ -18,6 +18,21 @@ namespace app
         }
     }
 
+    public class DriverCodeConverter : IValueConverter
+    {
+        public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            if (value is DriversData driver)
+                return $"{driver.permanentNumber} | {driver.code}";
+            return string.Empty;
+        }
+
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class TimerFormatCovnerter : IValueConverter
     {
         public object Convert(object? value, Type targetType, object? paramter, CultureInfo culture)

@@ -32,7 +32,7 @@
                       ColumnDefinitions="*, *, *, *"
                       BackgroundColor="Black">
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" CommandParameter="Race"/>
                     </Grid.GestureRecognizers>
                     <Label Text="{Binding date}" 
                            FontSize="10"
@@ -63,6 +63,9 @@
                       RowDefinitions="*,*,*"
                       ColumnDefinitions="*,*,*,*"
                       BackgroundColor="Black">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" CommandParameter="Driver"/>
+                    </Grid.GestureRecognizers>
                     <Label 
                         Text="{Binding positionText, StringFormat='P{0}'}"
                         FontSize="16"
@@ -101,6 +104,9 @@
                       RowDefinitions="*,*,*"
                       ColumnDefinitions="*,*,*,*"
                       BackgroundColor="Black">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" CommandParameter="Constructor"/>
+                    </Grid.GestureRecognizers>
                     <Label 
                         Text="{Binding positionText, StringFormat='P{0}'}"
                         FontSize="16"

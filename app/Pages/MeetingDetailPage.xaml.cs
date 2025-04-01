@@ -37,5 +37,7 @@ public partial class MeetingDetailPage : ContentPage
         sessions.Add(new SessionData { date = raceData.Qualifying?.date, time = raceData.Qualifying?.time, name = "Qualifying" });
         sessions.Add(new SessionData { date = raceData.date, time = raceData.time, name = "Race" });
         Sessions.ItemsSource = sessions;
+
+        imgCircuit.Source = $"{raceData.Circuit.circuitId}.png";
     }
 }

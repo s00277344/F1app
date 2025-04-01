@@ -1,5 +1,6 @@
 using JolpicaF1CSharp;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace app.Pages;
 
@@ -42,5 +43,15 @@ public partial class DriversStandings : ContentPage
     {
         year = (int)((Picker)sender).SelectedItem;
         await request();
+    }
+
+    private async void listDrivers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (listDrivers.SelectedItem is not null)
+        {
+            NavigationPage page = new NavigationPage(new DriverDetailPage((DriverStandingData)listDrivers.SelectedItem));
+            await Navigation.PushAsync(page);
+            listDrivers.SelectedItem = null;
+        }
     }
 }

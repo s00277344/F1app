@@ -6,6 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:FullNameConverter x:Key="FullNameConverter"/>
+            <local:DriverCodeConverter x:Key="DriverCodeConverter"/>
             <local:TimerFormatCovnerter x:Key="TimeFormatConverter"/>
             <local:DateFormatCovnerter x:Key="DateFormatConverter"/>
             <ResourceDictionary.MergedDictionaries>

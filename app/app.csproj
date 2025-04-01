@@ -184,6 +184,9 @@
 	  <MauiXaml Update="Pages\ConstructorStandings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\DriverDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\DriversStandings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

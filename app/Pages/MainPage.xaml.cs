@@ -6,7 +6,6 @@ namespace app.Pages
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
         bool IsInitialized = false;
         JolpicaF1Reader jolpicaF1Reader;
         RaceData raceData;
@@ -67,9 +66,21 @@ namespace app.Pages
 
         private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
         {
-            NavigationPage page = new NavigationPage(new MeetingDetailPage(raceData));
-
-            await Navigation.PushAsync(page);
+            if (sender is Grid grid && grid.GestureRecognizers.FirstOrDefault() is TapGestureRecognizer tap)
+            {
+                if (tap.CommandParameter is string paramter)
+                {
+                    Page? newPage = paramter switch
+                    {
+                        "Race" => new MeetingDetailPage(raceData),
+                        "Driver" => new DriverDetailPage(driverData),
+                        _ => null
+                    };
+                    
+                    if (newPage is not null)
+                        await Navigation.PushAsync(newPage);
+                }
+            }
         }
     }
 
