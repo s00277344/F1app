@@ -21,6 +21,6 @@ public partial class DriverDetailPage : ContentPage
         VerticalStackLayout.BindingContext = driverData;
         imgDriver.Source = $"{driverData.Driver.driverId}.png";
 		if (driverData.Constructors.Count > 0)
-			txtConstructor.Text = $"Constructor : {driverData.Constructors.First().name}";
+			txtConstructor.Text = $"Constructor : {driverData.Constructors.Last().name}";
     }
 }

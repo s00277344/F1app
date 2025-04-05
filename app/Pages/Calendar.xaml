@@ -7,57 +7,74 @@
              Appearing="ContentPage_Appearing">
 
     <ScrollView>
-        <VerticalStackLayout 
-            Padding="30,0"
-            Spacing="25">
+        <VerticalStackLayout>
 
-            <Image Source="calendar.png"/>
+            <Image 
+                Source="calendar.png"
+                Margin="0,10,0,10"/>
 
-            <HorizontalStackLayout Spacing="15">
-                <Label Text="Filter by : " FontSize="14" VerticalTextAlignment="Center"/>
-                <Picker Title="Year" x:Name="YearFilter" SelectedIndexChanged="YearFilter_SelectedIndexChanged"/>
-                <Picker Title="Location" x:Name="LocationFilter" SelectedIndexChanged="LocationFilter_SelectedIndexChanged"/>
+            <HorizontalStackLayout 
+                Spacing="15"
+                Margin="0,0,0,25">
+
+                <Label 
+                    Text="Filter by : " 
+                    FontSize="14" 
+                    VerticalTextAlignment="Center"/>
+                
+                <Picker 
+                    Title="Year" 
+                    x:Name="YearFilter" 
+                    SelectedIndexChanged="YearFilter_SelectedIndexChanged"/>
+                
+                <Picker 
+                    Title="Location" 
+                    x:Name="LocationFilter" 
+                    SelectedIndexChanged="LocationFilter_SelectedIndexChanged"/>
             </HorizontalStackLayout>
 
-            <Border>
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10"/>
-                </Border.StrokeShape>
-            
-                <CollectionView 
-                    BackgroundColor="Black"
-                    x:Name="listMeetings"
-                    SelectionChanged="listMeetings_SelectionChanged"
-                    SelectionMode="Single">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Border StrokeThickness=".5" Padding="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="0"/>
-                                </Border.StrokeShape>
+            <CollectionView 
+                x:Name="listMeetings"
+                SelectionChanged="listMeetings_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout 
+                        Orientation="Vertical"
+                        ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeThickness=".5" Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10"/>
+                            </Border.StrokeShape>
 
-                                <Grid ColumnDefinitions="2*, 4*, 2*" MinimumHeightRequest="50">
-                                    <Label 
-                                        Grid.Column="0" Text="{Binding date, Converter={StaticResource DateFormatConverter}}" 
-                                        FontSize="14"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"/>
-                                    <Label 
-                                        Grid.Column="1" Text="{Binding raceName}" 
-                                        FontSize="20"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"/>
-                                    <Label 
-                                        Grid.Column="2" Text="{Binding season}"
-                                        FontSize="14"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center"/>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Border>
+                            <Grid 
+                                BackgroundColor="Black"
+                                ColumnDefinitions="*, 4*, 2*" 
+                                MinimumHeightRequest="100"
+                                Padding="10">
+                                <Label 
+                                    Grid.Column="0" 
+                                    Text="{Binding date, Converter={StaticResource DateFormatConverter}}" 
+                                    FontSize="14"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"/>
+                                <Label 
+                                    Grid.Column="1" 
+                                    Text="{Binding raceName, Converter={StaticResource GrandPrixNameConverter}}"
+                                    FontSize="20"
+                                    HorizontalTextAlignment="Start"
+                                    VerticalTextAlignment="Center"
+                                    Margin="20,0,0,0"/>
+                                <Image
+                                    Grid.Column="2"
+                                    Source="{Binding Circuit.circuitId, Converter={StaticResource CircuitPNGConverter}}"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 

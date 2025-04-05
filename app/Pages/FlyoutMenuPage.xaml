@@ -5,9 +5,10 @@
              x:Class="app.Pages.FlyoutMenuPage"
              Title="FlyoutMenuPage">
 
-    <CollectionView x:Name="CollectionView"
-                    x:FieldModifier="public"
-                    SelectionMode="Single">
+    <CollectionView 
+        x:Name="CollectionView"
+        x:FieldModifier="public"
+        SelectionMode="Single">
         
         <CollectionView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutPageItem}">
@@ -21,12 +22,27 @@
         </CollectionView.ItemsSource>
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="local:FlyoutPageItem">
-                <Label Text="{Binding Title}"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       VerticalTextAlignment="Center"
-                       VerticalOptions="Center"
-                       MinimumHeightRequest="50"/>
+                <Grid Padding="10">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup Name="CommonStates">
+                            <VisualState Name="Normal" />
+                            <VisualState Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="red" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                    <Label 
+                        Text="{Binding Title}"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        VerticalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        MinimumHeightRequest="50"
+                        TextColor="White"/>
+                </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>

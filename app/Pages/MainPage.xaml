@@ -11,7 +11,7 @@
             Padding="30,0"
             Spacing="25">
             <Image
-                Source="formula1.jpg"
+                Source="formula1.png"
                 HeightRequest="185"
                 Aspect="AspectFill"/>
 

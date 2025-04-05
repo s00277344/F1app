@@ -74,6 +74,7 @@ namespace app.Pages
                     {
                         "Race" => new MeetingDetailPage(raceData),
                         "Driver" => new DriverDetailPage(driverData),
+                        "Constructor" => new ConstructorDetailPage(constructorData),
                         _ => null
                     };
                     

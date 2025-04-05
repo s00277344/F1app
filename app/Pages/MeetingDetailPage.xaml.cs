@@ -39,5 +39,17 @@ public partial class MeetingDetailPage : ContentPage
         Sessions.ItemsSource = sessions;
 
         imgCircuit.Source = $"{raceData.Circuit.circuitId}.png";
+#if ANDROID
+        var context = Android.App.Application.Context;
+        if (context.Resources?.GetIdentifier($"{raceData.Circuit.circuitId}", "drawable", context.PackageName) == 0)
+        {
+            var test = FindByName("CircuitLocation");
+            StackLayout.Remove((IView)test);
+            NameLabel.Margin = new Thickness(0, 0, 0, 30);
+        }
+#endif
+
+
+        CircuitLocation.BindingContext = raceData.Circuit;
     }
 }

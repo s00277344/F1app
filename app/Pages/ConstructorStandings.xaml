@@ -25,7 +25,9 @@
                 
                 <CollectionView 
                     BackgroundColor="Black"
-                    x:Name="listDrivers">
+                    x:Name="listConstructors"
+                    SelectionChanged="listDrivers_SelectionChanged"
+                    SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 

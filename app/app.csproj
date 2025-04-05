@@ -181,6 +181,9 @@
 	  <MauiXaml Update="Pages\Calendar.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ConstructorDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\ConstructorStandings.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -27,7 +27,7 @@ public partial class ConstructorStandings : ContentPage
         if (rawData is null) return;
 
         constructorStandingsDatas = JsonConvert.DeserializeObject<Root>(rawData).GetTarget<ConstructorStandingsData>();
-        listDrivers.ItemsSource = constructorStandingsDatas;
+        listConstructors.ItemsSource = constructorStandingsDatas;
     }
 
     private async void ContentPage_Appearing(object sender, EventArgs e)
@@ -43,5 +43,15 @@ public partial class ConstructorStandings : ContentPage
     {
         year = (int)((Picker)sender).SelectedItem;
         await request();
+    }
+
+    private async void listDrivers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (listConstructors.SelectedItem is not null)
+        {
+            NavigationPage page = new NavigationPage(new ConstructorDetailPage((ConstructorStandingsData)listConstructors.SelectedItem));
+            await Navigation.PushAsync(page);
+            listConstructors.SelectedItem = null;
+        }
     }
 }
