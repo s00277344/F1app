@@ -86,7 +86,7 @@ namespace JolpicaF1CSharp
 
         private string GetFilterString<TValue>(string propertyName, TValue value)
         {
-            string stringValue = value.ToString();
+            string? stringValue = value?.ToString();
 
             if (value is DateTime dateTime)
                 stringValue = FormateDateTime(dateTime);
