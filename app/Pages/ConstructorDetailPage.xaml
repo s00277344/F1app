@@ -5,50 +5,52 @@
              Title="ConstructorDetailPage"
              Appearing="ContentPage_Appearing">
 
-    <VerticalStackLayout
+    <ScrollView>
+        <VerticalStackLayout
         x:Name="VerticalStackLayout">
 
-        <Image x:Name="imgConstructor" HorizontalOptions="Center" Aspect="Fill"/>
+            <Image x:Name="imgConstructor" HorizontalOptions="Center" Aspect="Fill"/>
 
-        <Label
+            <Label
             Text="{Binding Constructor.name}"
             FontSize="24"
             FontAttributes="Bold"
             HorizontalOptions="Center"
             Margin="0,0,0,30"/>
 
-        <Border Margin="0,0,0,30">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10"/>
-            </Border.StrokeShape>
-            <VerticalStackLayout Padding="10, 10">
-                <Label
+            <Border Margin="0,0,0,30">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Padding="10, 10">
+                    <Label
                     Text="{Binding Constructor.nationality, StringFormat='Nationality : {0}'}"
                     FontSize="18"
                     Margin="0,0,0,10"/>
-            </VerticalStackLayout>
-        </Border>
+                </VerticalStackLayout>
+            </Border>
 
-        <Border
+            <Border
             Margin="0,0,0,30">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10"/>
-            </Border.StrokeShape>
-            <VerticalStackLayout Padding="10,10">
-                <Label
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <VerticalStackLayout Padding="10,10">
+                    <Label
                     Text="Constructor Standings :"
                     FontSize="24"
                     FontAttributes="Bold"
                     TextDecorations="Underline"/>
 
-                <Label
+                    <Label
                     Text="{Binding positionText, StringFormat='Position : {0}'}"
                     FontSize="20"/>
 
-                <Label
+                    <Label
                     Text="{Binding points, StringFormat='Points : {0}'}"
                     FontSize="20"/>
-            </VerticalStackLayout>
-        </Border>
-    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

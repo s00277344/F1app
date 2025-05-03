@@ -5,77 +5,79 @@
              Title="MeetingDetailPage"
              Appearing="ContentPage_Appearing">
 
-    <VerticalStackLayout
+    <ScrollView>
+        <VerticalStackLayout
         x:Name="StackLayout">
 
-        <Label 
+            <Label 
             x:Name="NameLabel" 
             Text="Meeting Schedule" 
             FontSize="24"
             FontAttributes="Bold"
             HorizontalOptions="Center"/>
 
-        <Image 
+            <Image 
             x:Name="imgCircuit" 
             HorizontalOptions="Center"/>
 
-        <Label
+            <Label
             x:Name="CircuitLocation" 
             Text="{Binding ., Converter={StaticResource CircuitLocation}}" 
             FontSize="14"
             HorizontalOptions="Center"
             Margin="0,-10,0,50"/>
 
-        <Label
+            <Label
             Text="Schedule :"
             FontSize="20"
             FontAttributes="Bold"
             TextDecorations="Underline"
             Margin="35,0,0,10"/>
 
-        <Border
+            <Border
             HorizontalOptions="Center">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="10"/>
-            </Border.StrokeShape>
-            <CollectionView 
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <CollectionView 
                 BackgroundColor="Black"
                 x:Name="Sessions">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Border>
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="0"/>
-                            </Border.StrokeShape>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0"/>
+                                </Border.StrokeShape>
 
-                            <Grid MinimumHeightRequest="50">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1.5*"/>
-                                    <ColumnDefinition Width="4*"/>
-                                </Grid.ColumnDefinitions>
+                                <Grid MinimumHeightRequest="50">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
-                                    <Label 
+                                    <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Label 
                                         Text="{Binding date, Converter={StaticResource DateFormatConverter}}" 
                                         FontSize="18"
                                         HorizontalOptions="Center"/>
-                                    <Label 
+                                        <Label 
                                         Text="{Binding time, Converter={StaticResource TimeFormatConverter}}" 
                                         FontSize="14"
                                         HorizontalOptions="Center"/>
-                                </VerticalStackLayout>
-                                <Label 
+                                    </VerticalStackLayout>
+                                    <Label 
                                     Text="{Binding name}" 
                                     FontSize="20"
                                     Grid.Column="1" 
                                     HorizontalOptions="Center" 
                                     VerticalOptions="Center" 
                                     VerticalTextAlignment="Center"/>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Border>
-    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
